@@ -1,6 +1,9 @@
 # Firebase Database Connection
 *.firebase
 
+# Face++ API Config
+*.faceplusplus
+
 # Node JS 
 
 # Logs
