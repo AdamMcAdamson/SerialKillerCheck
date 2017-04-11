@@ -31,7 +31,7 @@ $(document).ready(function() {
                  	   },
                  	   {
                         label: "2015 Temperature Avgs (in Farenheit)",
-                        data: [15, 25, 35, 45, 50],
+                        data: [15, 25, 35, 45, 75],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
@@ -57,7 +57,7 @@ $(document).ready(function() {
 
         options: {
             scale: {
-                reverse: true,
+                reverse: false,
                 ticks: {
                     beginAtZero: true
                 }
