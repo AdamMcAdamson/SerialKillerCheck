@@ -1,3 +1,5 @@
+/*Don't hold your breath for useful commenting in this mess of a css file.  It works.*/
+
 .text-flicker-in-glow {
 	-webkit-animation: text-flicker-in-glow 2s cubic-bezier(0.600, -0.280, 0.735, 0.045) forwards;
 	-moz-animation: text-flicker-in-glow 2s cubic-bezier(0.600, -0.280, 0.735, 0.045) forwards;

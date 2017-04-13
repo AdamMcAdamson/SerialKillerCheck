@@ -1,3 +1,19 @@
+var input = $("#urlInput");
+var submit = $("#buttonName");
+// comparison confidence - format: .html(confidence+"%<br>Match");
+var percentage = $("#percentage");
+// <img> for input pic .attr("src", https://www.placeholderurl.com);
+var user = $("#userPic");
+// <img> for matched killer pic .attr("src", https://www.placeholderurl.com);
+var killer = $("#killerPic");
+// points to chartJS <canvas> tag
+var chart = $("#compareChart");
+// where the wiki response will go.  Include inside <p> tags
+var wikiInfo = $("#description");
+
+var time = 0;
+
+// displays messages one letter at a time (ideally)
 function showText(target, message, index, interval) {   
   if (index < message.length) {
     $(target).append(message[index]);
@@ -5,11 +21,15 @@ function showText(target, message, index, interval) {
     setTimeout(function () { showText(target, message, index, interval); }, interval);
   }
 }
+
+// displays the content display version of the page once the face++ and wiki calls return the data
 function display() {
-	$("#second").hide();
+	$("#first").hide();
 	$("#third").show();
 	$("body").removeClass("bodyTwo").addClass("bodyFour");
 }
+
+// this part iterates through the steps of the intro animations
 $(document).ready(function(){
 	$("#second").hide();
 	$("#third").hide();
@@ -33,9 +53,15 @@ $(document).ready(function(){
 		$("body").removeClass("bodyThree").addClass("bodyTwo");
 	}, 24750);
 	$("#buttonName").on("click", function() {
-		display();
+		// display();
+		completion = setInterval(function(){
+			$("#second").hide();
+			$("#first").show();
+			$("#welcome").empty().html("<div class='valign-wrapper center-align' style='width: 20%; margin: 0 auto; color: lightgray; margin-top: 15%;'><h1 id='test'>"+time+"% Complete</h1></div>");
+			time++;
+			if (time === 102) {
+				clearInterval(completion);
+				display();
+		}}, 130);
 	});
 });
-
-
-
