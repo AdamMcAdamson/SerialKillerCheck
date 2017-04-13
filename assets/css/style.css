@@ -1,5 +1,10 @@
 /*Don't hold your breath for useful commenting in this mess of a css file.  It works.*/
 
+#killerName{
+	text-align: center;
+	font-size: 2em;
+}
+
 .text-flicker-in-glow {
 	-webkit-animation: text-flicker-in-glow 2s cubic-bezier(0.600, -0.280, 0.735, 0.045) forwards;
 	-moz-animation: text-flicker-in-glow 2s cubic-bezier(0.600, -0.280, 0.735, 0.045) forwards;
@@ -37,7 +42,7 @@
 }
 
 .bodyOne {
-	background-image: 	url(	../images/hannibalFinal.gif);
+	background-image: 	url(../images/hannibalFinal.gif);
 	background-size: 	100%;
 }
 
@@ -47,7 +52,7 @@
 }
 
 .bodyThree {
-	background-image: 	url(	../images/laughing.gif);
+	background-image: 	url(../images/laughing.gif);
 	background-size: 	100%;
 }
 
@@ -130,7 +135,7 @@
 }
 
 .skInfoRelative > p {
-	max-height: 90%;
+	max-height: 75%;
 	overflow: hidden;
 }
 
@@ -153,7 +158,7 @@
 	position: absolute;
 	min-width: 100%;
 	min-height: 100%;
-	width: 100%;
+	/*width: 100%;*/
 	left: 0px;
 	top: 0px;
 }
@@ -189,17 +194,18 @@
 
 
 .polaroidChart {
-	padding: 20px 8px 76px 8px;
+	padding: 20px 18px 80px 15px;
 	background-image: url(../images/polaroid.png);
 	background-size: 100% 100%;
 	position: absolute;
-	width: 289px;
-	height: 360px;
-	left: 256px;
-	top: 509px;
+	width: 350px;
+	height: 420px;
+	left: 157px;
+	top: 445px;
 	transform: rotate(0.3deg);
 	-ms-transform: rotate(0.3deg);
     -webkit-transform: rotate(0.3deg);
+    z-index: 20;
 }
 
 
@@ -216,6 +222,15 @@
 	left: 530px;
 	top: 105px;
 }
+.error-info {
+	text-align: center;
+	color: rgb(200, 60, 60);
+}
+
+#similar-chart-text {
+	margin-top: 28px;
+	text-align: center;
+}
 
 @font-face {
   font-family: typeWriter;
@@ -226,306 +241,322 @@
 }
 
 @media screen and (max-width: 1435px) {
-.containerMain {
-	height: 810px;
-	width: 1250px;
-	position: relative;
-	background-image: url(../images/caseFile1250.png);
-	margin: 0 auto;
-}
+	.containerMain {
+		height: 810px;
+		width: 1250px;
+		position: relative;
+		background-image: url(../images/caseFile1250.png);
+		margin: 0 auto;
+	}
 
-.skInfo {
-	position: absolute;
-	transform: rotate(1deg);
-	-ms-transform: rotate(1deg);
-    -webkit-transform: rotate(1deg);
-	text-align: justify;
-}
-.skInfoRelative {
-	position: relative;
-	width: 435px;
-	height: 570px;
-	overflow: hidden;
-	left: 645px;
-	top: 126px;
-}
+	#killerName{
+		text-align: center;
+		font-size: 1.5em;
+	}
 
-.skInfoRelative > p {
-	max-height: 84%;
-}
-.read-more {
-	position: absolute;
-	bottom: 10px;
-}
-.pic {
-	position: absolute;
-	min-width: 100%;
-	min-height: 100%;
-	width: 100%;
-	left: 0px;
-	top: 0px;
-}
+	.skInfo {
+		position: absolute;
+		transform: rotate(1deg);
+		-ms-transform: rotate(1deg);
+	    -webkit-transform: rotate(1deg);
+		text-align: justify;
+	}
+	.skInfoRelative {
+		position: relative;
+		width: 435px;
+		height: 570px;
+		overflow: hidden;
+		left: 645px;
+		top: 126px;
+	}
 
-.polaroidUser {
-	padding: 17px 6px 64px 7px;
-	background-image: url(../images/polaroid.png);
-	background-size: 100% 100%;
-	position: absolute;
-	width: 240px;
-	height: 352px;
-	left: 160px;
-	top: 114px;
-	transform: rotate(-1.7deg);
-	-ms-transform: rotate(-1.7deg);
-    -webkit-transform: rotate(-1.7deg);
-    z-index: 10;
-}
+	.skInfoRelative > p {
+		max-height: 75%;
+	}
+	.read-more {
+		position: absolute;
+		bottom: 10px;
+	}
+	.pic {
+		position: absolute;
+		min-width: 100%;
+		min-height: 100%;
+		width: 100%;
+		left: 0px;
+		top: 0px;
+	}
 
-.polaroidKiller {
-	padding: 17px 6px 64px 7px;
-	background-image: url(../images/polaroid.png);
-	background-size: 100% 100%;
-	position: absolute;
-	width: 240px;
-	height: 352px;
-	left: 353px;
-	top: 254px;
-	transform: rotate(2.3deg);
-	-ms-transform: rotate(2.3deg);
-    -webkit-transform: rotate(2.3deg);
-}
+	.polaroidUser {
+		padding: 17px 6px 64px 7px;
+		background-image: url(../images/polaroid.png);
+		background-size: 100% 100%;
+		position: absolute;
+		width: 240px;
+		height: 352px;
+		left: 160px;
+		top: 114px;
+		transform: rotate(-1.7deg);
+		-ms-transform: rotate(-1.7deg);
+	    -webkit-transform: rotate(-1.7deg);
+	    z-index: 10;
+	}
 
-
-.polaroidChart {
-	padding: 17px 6px 64px 7px;
-	background-image: url(../images/polaroid.png);
-	background-size: 100% 100%;
-	position: absolute;
-	width: 240px;
-	height: 300px;
-	left: 177px;
-	top: 435px;
-	transform: rotate(0.3deg);
-	-ms-transform: rotate(0.3deg);
-    -webkit-transform: rotate(0.3deg);
-}
+	.polaroidKiller {
+		padding: 17px 6px 64px 7px;
+		background-image: url(../images/polaroid.png);
+		background-size: 100% 100%;
+		position: absolute;
+		width: 240px;
+		height: 352px;
+		left: 353px;
+		top: 254px;
+		transform: rotate(2.3deg);
+		-ms-transform: rotate(2.3deg);
+	    -webkit-transform: rotate(2.3deg);
+	}
 
 
-.goBetween {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-}
+	.polaroidChart {
+		padding: 17px 14px 66px 14px;
+		background-image: url(../images/polaroid.png);
+		background-size: 100% 100%;
+		position: absolute;
+		width: 260px;
+		height: 320px;
+		left: 153px;
+		top: 393px;
+		transform: rotate(0.3deg);
+		-ms-transform: rotate(0.3deg);
+	    -webkit-transform: rotate(0.3deg);
+	}
 
-.matchPercent {
-	color: red;
-	position: absolute;
-	left: 440px;
-	top: 105px;
-}
+
+	.goBetween {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+
+	.matchPercent {
+		color: red;
+		position: absolute;
+		left: 440px;
+		top: 105px;
+	}
+	#similar-chart-text {
+		margin-top: 22px;
+	}
+
 }
 @media screen and (max-width: 1225px) {
 	.containerMain {
-	height: 600px;
-	width: 1000px;
-	position: relative;
-	background-image: url(../images/caseFile1000.png);
-	margin: 0 auto;
-}
+		height: 600px;
+		width: 1000px;
+		position: relative;
+		background-image: url(../images/caseFile1000.png);
+		margin: 0 auto;
+	}
 
-.skInfo {
-	position: absolute;
-	transform: rotate(1deg);
-	-ms-transform: rotate(1deg);
-    -webkit-transform: rotate(1deg);
-	text-align: justify;
-}
+	.skInfo {
+		position: absolute;
+		transform: rotate(1deg);
+		-ms-transform: rotate(1deg);
+	    -webkit-transform: rotate(1deg);
+		text-align: justify;
+	}
 
-.skInfoRelative {
-	width: 350px;
-	height: 465px;
-	overflow: hidden;
-	left: 515px;
-	top: 95px;
-	position: relative;
-}
+	.skInfoRelative {
+		width: 350px;
+		height: 465px;
+		overflow: hidden;
+		left: 515px;
+		top: 95px;
+		position: relative;
+	}
 
-.skInfoRelative > p {
-	max-height: 80%;
-}
+	.skInfoRelative > p {
+		max-height: 68%;
+	}
 
-.read-more {
-	position: absolute;
-	bottom: 10px;
-}
+	.read-more {
+		position: absolute;
+		bottom: 10px;
+	}
 
-.pic {
-	position: absolute;
-	min-width: 100%;
-	min-height: 100%;
-	width: 100%;
-	left: 0px;
-	top: 0px;
-}
+	.pic {
+		position: absolute;
+		min-width: 100%;
+		min-height: 100%;
+		width: 100%;
+		left: 0px;
+		top: 0px;
+	}
 
-.polaroidUser {
-	padding: 14px 6px 46px 6px;
-	background-image: url(../images/polaroid.png);
-	background-size: 100% 100%;
-	position: absolute;
-	width: 192px;
-	height: 272px;
-	left: 121px;
-	top: 85px;
-	transform: rotate(-1.7deg);
-	-ms-transform: rotate(-1.7deg);
-    -webkit-transform: rotate(-1.7deg);
-    z-index: 10;
-}
+	.polaroidUser {
+		padding: 14px 6px 46px 6px;
+		background-image: url(../images/polaroid.png);
+		background-size: 100% 100%;
+		position: absolute;
+		width: 192px;
+		height: 272px;
+		left: 121px;
+		top: 85px;
+		transform: rotate(-1.7deg);
+		-ms-transform: rotate(-1.7deg);
+	    -webkit-transform: rotate(-1.7deg);
+	    z-index: 10;
+	}
 
-.polaroidKiller {
-	padding: 14px 6px 46px 6px;
-	background-image: url(../images/polaroid.png);
-	background-size: 100% 100%;
-	position: absolute;
-	width: 192px;
-	height: 272px;
-	left: 283px;
-	top: 220px;
-	transform: rotate(2.3deg);
-	-ms-transform: rotate(2.3deg);
-    -webkit-transform: rotate(2.3deg);
-}
-
-
-.polaroidChart {
-	padding: 14px 6px 54px 6px;
-	background-image: url(../images/polaroid.png);
-	background-size: 100% 100%;
-	position: absolute;
-	width: 192px;
-	height: 242px;
-	left: 118px;
-	top: 348px;
-	transform: rotate(0.3deg);
-	-ms-transform: rotate(0.3deg);
-    -webkit-transform: rotate(0.3deg);
-}
+	.polaroidKiller {
+		padding: 14px 6px 46px 6px;
+		background-image: url(../images/polaroid.png);
+		background-size: 100% 100%;
+		position: absolute;
+		width: 192px;
+		height: 272px;
+		left: 283px;
+		top: 220px;
+		transform: rotate(2.3deg);
+		-ms-transform: rotate(2.3deg);
+	    -webkit-transform: rotate(2.3deg);
+	}
 
 
-.goBetween {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-}
+	.polaroidChart {
+		padding: 20px 14px 72px 14px;
+		background-image: url(../images/polaroid.png);
+		background-size: 100% 100%;
+		position: absolute;
+		width: 320px;
+		height: 390px;
+		left: 280px;
+		top: 611px;
+		transform: rotate(-2deg);
+		-ms-transform: rotate(-2deg);
+	    -webkit-transform: rotate(-2deg);
+	}
 
-.matchPercent {
-	color: red;
-	position: absolute;
-	left: 338px;
-	top: 81px;
-}
+
+	.goBetween {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+
+	.matchPercent {
+		color: red;
+		position: absolute;
+		left: 338px;
+		top: 81px;
+	}
+	#similar-chart-text {
+		margin-top: 22px;
+	}
+
 }
 @media screen and (max-width: 950px) {
 	.containerMain {
-	height: 1845px;
-	width: 750px;
-	position: relative;
-	background-image: url(../images/caseFileVertical.png);
-	margin: 0 auto;
-}
+		height: 1845px;
+		width: 750px;
+		position: relative;
+		background-image: url(../images/caseFileVertical.png);
+		margin: 0 auto;
+	}
 
-.skInfo {
-	position: absolute;
-	transform: rotate(1deg);
-	-ms-transform: rotate(1deg);
-    -webkit-transform: rotate(1deg);
-	text-align: justify;
-}
+	.skInfo {
+		position: absolute;
+		transform: rotate(1deg);
+		-ms-transform: rotate(1deg);
+	    -webkit-transform: rotate(1deg);
+		text-align: justify;
+	}
 
-.skInfoRelative {
-	width: 450px;
-	height: 600px;
-	overflow: hidden;
-	left: 138px;
-	top: 1000px;
-	position: relative;
-}
+	.skInfoRelative {
+		width: 450px;
+		height: 600px;
+		overflow: hidden;
+		left: 138px;
+		top: 1000px;
+		position: relative;
+	}
 
-.skInfoRelative > p {
-	max-height: 84%;
-}
-.read-more {
-	position: absolute;
-	bottom: 10px;
-}
-.pic {
-	position: absolute;
-	min-width: 100%;
-	min-height: 100%;
-	width: 100%;
-	left: 0px;
-	top: 0px;
-}
+	.skInfoRelative > p {
+		max-height: 75%;
+	}
+	.read-more {
+		position: absolute;
+		bottom: 10px;
+	}
+	.pic {
+		position: absolute;
+		min-width: 100%;
+		min-height: 100%;
+		width: 100%;
+		left: 0px;
+		top: 0px;
+	}
 
-.polaroidUser {
-	padding: 17px 6px 64px 7px;
-	background-image: url(../images/polaroid.png);
-	background-size: 100% 100%;
-	position: absolute;
-	width: 240px;
-	height: 352px;
-	left: 152px;
-	top: 170px;
-	transform: rotate(-1.7deg);
-	-ms-transform: rotate(-1.7deg);
-    -webkit-transform: rotate(-1.7deg);
-    z-index: 10;
-}
+	.polaroidUser {
+		padding: 17px 6px 64px 7px;
+		background-image: url(../images/polaroid.png);
+		background-size: 100% 100%;
+		position: absolute;
+		width: 240px;
+		height: 352px;
+		left: 152px;
+		top: 170px;
+		transform: rotate(-1.7deg);
+		-ms-transform: rotate(-1.7deg);
+	    -webkit-transform: rotate(-1.7deg);
+	    z-index: 10;
+	}
 
-.polaroidKiller {
-	padding: 17px 6px 64px 7px;
-	background-image: url(../images/polaroid.png);
-	background-size: 100% 100%;
-	position: absolute;
-	width: 240px;
-	height: 352px;
-	left: 363px;
-	top: 319px;
-	transform: rotate(2.3deg);
-	-ms-transform: rotate(2.3deg);
-    -webkit-transform: rotate(2.3deg);
-}
-
-
-.polaroidChart {
-	padding: 17px 6px 64px 7px;
-	background-image: url(../images/polaroid.png);
-	background-size: 100% 100%;
-	position: absolute;
-	width: 240px;
-	height: 300px;
-	left: 177px;
-	top: 500px;
-	transform: rotate(0.3deg);
-	-ms-transform: rotate(0.3deg);
-    -webkit-transform: rotate(0.3deg);
-}
+	.polaroidKiller {
+		padding: 17px 6px 64px 7px;
+		background-image: url(../images/polaroid.png);
+		background-size: 100% 100%;
+		position: absolute;
+		width: 240px;
+		height: 352px;
+		left: 363px;
+		top: 319px;
+		transform: rotate(2.3deg);
+		-ms-transform: rotate(2.3deg);
+	    -webkit-transform: rotate(2.3deg);
+	}
 
 
-.goBetween {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-}
+	.polaroidChart {
+		padding: 17px 16px 72px 10px;
+		background-image: url(../images/polaroid.png);
+		background-size: 100% 100%;
+		position: absolute;
+		width: 312px;
+		height: 376px;
+		left: 112px;
+		top: 470px;
+		transform: rotate(0.3deg);
+		-ms-transform: rotate(0.3deg);
+	    -webkit-transform: rotate(0.3deg);
+	}
 
-.matchPercent {
-	color: red;
-	position: absolute;
-	left: 440px;
-	top: 170px;
-}
+
+	.goBetween {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+
+	.matchPercent {
+		color: red;
+		position: absolute;
+		left: 440px;
+		top: 170px;
+	}
+	#similar-chart-text {
+		margin-top: 22px;
+	}
 }

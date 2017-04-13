@@ -26,11 +26,11 @@ var nose = 0;
 
 characteristics.on("child_added", function(snapshot) {
     if(count === snapshot.val().count) {
-    currentFace = JSON.parse(snapshot.val().jsonOut);
-    console.log(currentFace);
-    age = currentFace.faces[0].attributes.age.value;
-    faceWidth = currentFace.faces[0].face_rectangle.width;
-    populateChart(currentFace.faces[0]);
+        currentFace = JSON.parse(snapshot.val().jsonOut);
+        console.log(currentFace);
+        age = currentFace.faces[0].attributes.age.value;
+        faceWidth = currentFace.faces[0].face_rectangle.width;
+        populateChart(currentFace.faces[0]);
     }  
 });
 

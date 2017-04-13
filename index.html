@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/animista.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	<script src="https://www.gstatic.com/firebasejs/3.7.6/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
 	<!-- <script src="testLogic/chartJS/chartJSLogic.js"></script> -->
 </head>
 <body class="bodyOne" style="padding-top: 90px; font-family: typeWriter;">
@@ -26,6 +26,7 @@
 				<div class="row">
 					<input id="urlInput" class="inputBox"></input><button id="buttonName" class="buttonInverse">Submit</button></div>
 				</div>
+				<div class="row error-info"><h4>That URL is invalid. No face was found. Please enter another.</h4></div>
 			</div>
 		</div>
 	</div>
@@ -51,6 +52,7 @@
 					<div class="goBetween">
 						<canvas id="compareChart" class="pic"></canvas>
 					</div>
+					<h4 id="similar-chart-text">Similarities</h4>
 				</div>
 				<div class="skInfo">
 					<div class="skInfoRelative" id="description">
@@ -67,8 +69,10 @@
 		</div>
 	</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
 <script src="facePPSetup.js" type="text/javascript"></script>
 <script src="firebaseSetup.js" type="text/javascript"></script>
+
 <script src="assets/javascript/app.js"></script>
 <body>
 </body>

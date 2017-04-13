@@ -1,6 +1,6 @@
 
-    console.log("ready");
-    function mainProgram() {
+console.log("ready");
+function mainProgram() {
     // instantiate Chart class
     var ctx = $("#compareChart");
     // instantiate Radar chart style
@@ -46,9 +46,6 @@
             }
         }
     });
-
-    
-
 }
 
 
