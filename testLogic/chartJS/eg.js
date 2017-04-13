@@ -37,6 +37,19 @@ function populateChartKiller() {
     console.log(killerGender);
     console.log(killerEthnicity);
     mainProgram();
+    calculateKillerEyes();
+}
+
+// calculate using distance formula
+function calculateKillerEyes() {
+    var xCoords = (matchedKiller.faces[0].landmark.left_eye_center.x - matchedKiller.faces[0].landmark.right_eye_center.x);
+    var yCoords = (matchedKiller.faces[0].landmark.left_eye_center.y - matchedKiller.faces[0].landmark.right_eye_center.y);
+    var xRawDist = Math.sqrt((xCoords * xCoords));
+    var yRawDist = Math.sqrt((yCoords * yCoords));
+    var totalRawDist = xRawDist + yRawDist;
+    killerEyes = totalRawDist / matchedKiller.faces[0].face_rectangle.width;
+
+    console.log("LOOK " + killerEyes);
 }
 
 
