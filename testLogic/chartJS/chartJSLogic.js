@@ -5,7 +5,7 @@
     // instantiate Chart class
     var ctx = $("#compareChart");
     // instantiate Radar chart style
-    var killerCompare = new Chart(ctx, {
+   setTimeout(function() {var killerCompare = new Chart(ctx, {
             type: "radar",
             data: {
                 labels: ["Gender", "Age", "Ethnicity", "Nose", "Ears"],
@@ -65,7 +65,7 @@
             }
         }
     });
-}
 
 
+     }, 1000); 
 

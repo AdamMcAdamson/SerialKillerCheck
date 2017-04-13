@@ -1,0 +1,475 @@
+.text-flicker-in-glow {
+	-webkit-animation: text-flicker-in-glow 2s cubic-bezier(0.600, -0.280, 0.735, 0.045) forwards;
+	-moz-animation: text-flicker-in-glow 2s cubic-bezier(0.600, -0.280, 0.735, 0.045) forwards;
+	animation: text-flicker-in-glow 2s cubic-bezier(0.600, -0.280, 0.735, 0.045) forwards;
+}
+
+.text-flicker-out-glow {
+	-webkit-animation: text-flicker-out-glow 2.5s linear both;
+	-moz-animation: text-flicker-out-glow 2.5s linear both;
+	animation: text-flicker-out-glow 2.5s linear both;
+}
+
+.flip-scale-up-hor {
+	-webkit-animation: flip-scale-up-hor 0.5s linear both;
+	-moz-animation: flip-scale-up-hor 0.5s linear both;
+	animation: flip-scale-up-hor 0.5s linear both;
+}
+
+.preContainer {
+	width: 100%;
+}
+
+.welcome {
+	width: 20%;
+	margin: 0 auto;
+	font-family: default;
+	margin-top: 20%;
+}
+
+.welcome2 {
+	width: 85%;
+	margin: 0 auto;
+	font-family: default;
+	margin-top: 20%;
+}
+
+.bodyOne {
+	background-image: 	url(	../images/hannibalFinal.gif);
+	background-size: 	100%;
+}
+
+.bodyTwo {
+	background-color: black;
+	background-size: 100%;
+}
+
+.bodyThree {
+	background-image: 	url(	../images/laughing.gif);
+	background-size: 	100%;
+}
+
+.bodyFour {
+	background-image: url(../images/background.png);
+}
+
+.whiteText {
+	color: black;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.URLInput {
+	width: 50%;
+	margin: 0 auto;
+}
+
+.inputBox {
+	width: 500px;
+	color: lightgray;
+}
+
+.border {
+	border-radius: 5px;
+	margin: 10px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.button {
+	margin-left: 25px;
+	margin-right: 25px;
+	margin-top: 20px;
+	border: 2px solid black;
+	border-radius: 5px;
+	background: none;
+	padding: 0px 8px 3px 11px;
+}
+
+.button:focus {
+	background: none;
+}
+
+.buttonInverse {
+	font-size: 35px;
+	margin-left: 25px;
+	margin-right: 25px;
+	margin-top: 20px;
+	border: 2px solid gray;
+	color: gray;
+	border-radius: 5px;
+	background: none;
+	padding: 0px 8px 3px 11px;
+}
+
+.buttonInverse:focus {
+	background: none;
+}
+
+.containerMain {
+	height: 1000px;
+	width: 1500px;
+	position: relative;
+	background-image: url(../images/caseFile.png);
+	margin: 0 auto;
+}
+
+.skInfo {
+	position: absolute;
+	width: 525px;
+	height: 665px;
+	overflow: hidden;
+	left: 770px;
+	top: 160px;
+	transform: rotate(1deg);
+	-ms-transform: rotate(1deg);
+    -webkit-transform: rotate(1deg);
+	text-align: justify;
+}
+
+.pic {
+	position: absolute;
+	min-width: 100%;
+	min-height: 100%;
+	width: 100%;
+	left: 0px;
+	top: 0px;
+}
+
+.polaroidUser {
+	padding: 20px 8px 76px 8px;
+	background-image: url(../images/polaroid.png);
+	background-size: 100%;
+	position: absolute;
+	width: 289px;
+	height: 360px;
+	left: 186px;
+	top: 114px;
+	transform: rotate(-1.7deg);
+	-ms-transform: rotate(-1.7deg);
+    -webkit-transform: rotate(-1.7deg);
+    z-index: 10;
+}
+
+.polaroidKiller {
+	padding: 20px 8px 76px 8px;
+	background-image: url(../images/polaroid.png);
+	background-size: 100%;
+	position: absolute;
+	width: 289px;
+	height: 360px;
+	left: 428px;
+	top: 254px;
+	transform: rotate(2.3deg);
+	-ms-transform: rotate(2.3deg);
+    -webkit-transform: rotate(2.3deg);
+}
+
+
+.polaroidChart {
+	padding: 20px 8px 76px 8px;
+	background-image: url(../images/polaroid.png);
+	background-size: 100%;
+	position: absolute;
+	width: 289px;
+	height: 360px;
+	left: 256px;
+	top: 509px;
+	transform: rotate(0.3deg);
+	-ms-transform: rotate(0.3deg);
+    -webkit-transform: rotate(0.3deg);
+}
+
+
+.goBetween {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.matchPercent {
+	color: red;
+	position: absolute;
+	left: 530px;
+	top: 105px;
+}
+
+@font-face {
+  font-family: typeWriter;
+  src: local("Helvetica Neue Bold"),
+       local("HelveticaNeue-Bold"),
+       url(../fonts/typeWriter.ttf);
+  font-weight: normal;
+}
+
+@media screen and (max-width: 1435px) {
+.containerMain {
+	height: 810px;
+	width: 1250px;
+	position: relative;
+	background-image: url(../images/caseFile1250.png);
+	margin: 0 auto;
+}
+
+.skInfo {
+	position: absolute;
+	width: 435px;
+	height: 570px;
+	overflow: hidden;
+	left: 645px;
+	top: 126px;
+	transform: rotate(1deg);
+	-ms-transform: rotate(1deg);
+    -webkit-transform: rotate(1deg);
+	text-align: justify;
+}
+
+.pic {
+	position: absolute;
+	min-width: 100%;
+	min-height: 100%;
+	width: 100%;
+	left: 0px;
+	top: 0px;
+}
+
+.polaroidUser {
+	padding: 17px 6px 64px 7px;
+	background-image: url(../images/polaroid.png);
+	background-size: 100%;
+	position: absolute;
+	width: 240px;
+	height: 300px;
+	left: 160px;
+	top: 114px;
+	transform: rotate(-1.7deg);
+	-ms-transform: rotate(-1.7deg);
+    -webkit-transform: rotate(-1.7deg);
+    z-index: 10;
+}
+
+.polaroidKiller {
+	padding: 17px 6px 64px 7px;
+	background-image: url(../images/polaroid.png);
+	background-size: 100%;
+	position: absolute;
+	width: 240px;
+	height: 300px;
+	left: 353px;
+	top: 254px;
+	transform: rotate(2.3deg);
+	-ms-transform: rotate(2.3deg);
+    -webkit-transform: rotate(2.3deg);
+}
+
+
+.polaroidChart {
+	padding: 17px 6px 64px 7px;
+	background-image: url(../images/polaroid.png);
+	background-size: 100%;
+	position: absolute;
+	width: 240px;
+	height: 300px;
+	left: 177px;
+	top: 435px;
+	transform: rotate(0.3deg);
+	-ms-transform: rotate(0.3deg);
+    -webkit-transform: rotate(0.3deg);
+}
+
+
+.goBetween {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.matchPercent {
+	color: red;
+	position: absolute;
+	left: 440px;
+	top: 105px;
+}
+}
+@media screen and (max-width: 1225px) {
+	.containerMain {
+	height: 600px;
+	width: 1000px;
+	position: relative;
+	background-image: url(../images/caseFile1000.png);
+	margin: 0 auto;
+}
+
+.skInfo {
+	position: absolute;
+	width: 350px;
+	height: 465px;
+	overflow: hidden;
+	left: 515px;
+	top: 95px;
+	transform: rotate(1deg);
+	-ms-transform: rotate(1deg);
+    -webkit-transform: rotate(1deg);
+	text-align: justify;
+}
+
+.pic {
+	position: absolute;
+	min-width: 100%;
+	min-height: 100%;
+	width: 100%;
+	left: 0px;
+	top: 0px;
+}
+
+.polaroidUser {
+	padding: 14px 6px 54px 6px;
+	background-image: url(../images/polaroid.png);
+	background-size: 100%;
+	position: absolute;
+	width: 192px;
+	height: 242px;
+	left: 121px;
+	top: 85px;
+	transform: rotate(-1.7deg);
+	-ms-transform: rotate(-1.7deg);
+    -webkit-transform: rotate(-1.7deg);
+    z-index: 10;
+}
+
+.polaroidKiller {
+	padding: 14px 6px 54px 6px;
+	background-image: url(../images/polaroid.png);
+	background-size: 100%;
+	position: absolute;
+	width: 192px;
+	height: 242px;
+	left: 283px;
+	top: 220px;
+	transform: rotate(2.3deg);
+	-ms-transform: rotate(2.3deg);
+    -webkit-transform: rotate(2.3deg);
+}
+
+
+.polaroidChart {
+	padding: 14px 6px 54px 6px;
+	background-image: url(../images/polaroid.png);
+	background-size: 100%;
+	position: absolute;
+	width: 192px;
+	height: 242px;
+	left: 118px;
+	top: 336px;
+	transform: rotate(0.3deg);
+	-ms-transform: rotate(0.3deg);
+    -webkit-transform: rotate(0.3deg);
+}
+
+
+.goBetween {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.matchPercent {
+	color: red;
+	position: absolute;
+	left: 338px;
+	top: 81px;
+}
+}
+@media screen and (max-width: 950px) {
+	.containerMain {
+	height: 1845px;
+	width: 750px;
+	position: relative;
+	background-image: url(../images/caseFileVertical.png);
+	margin: 0 auto;
+}
+
+.skInfo {
+	position: absolute;
+	width: 450px;
+	height: 600px;
+	overflow: hidden;
+	left: 138px;
+	top: 1000px;
+	transform: rotate(1deg);
+	-ms-transform: rotate(1deg);
+    -webkit-transform: rotate(1deg);
+	text-align: justify;
+}
+
+.pic {
+	position: absolute;
+	min-width: 100%;
+	min-height: 100%;
+	width: 100%;
+	left: 0px;
+	top: 0px;
+}
+
+.polaroidUser {
+	padding: 17px 6px 64px 7px;
+	background-image: url(../images/polaroid.png);
+	background-size: 100%;
+	position: absolute;
+	width: 240px;
+	height: 300px;
+	left: 160px;
+	top: 179px;
+	transform: rotate(-1.7deg);
+	-ms-transform: rotate(-1.7deg);
+    -webkit-transform: rotate(-1.7deg);
+    z-index: 10;
+}
+
+.polaroidKiller {
+	padding: 17px 6px 64px 7px;
+	background-image: url(../images/polaroid.png);
+	background-size: 100%;
+	position: absolute;
+	width: 240px;
+	height: 300px;
+	left: 353px;
+	top: 319px;
+	transform: rotate(2.3deg);
+	-ms-transform: rotate(2.3deg);
+    -webkit-transform: rotate(2.3deg);
+}
+
+
+.polaroidChart {
+	padding: 17px 6px 64px 7px;
+	background-image: url(../images/polaroid.png);
+	background-size: 100%;
+	position: absolute;
+	width: 240px;
+	height: 300px;
+	left: 177px;
+	top: 500px;
+	transform: rotate(0.3deg);
+	-ms-transform: rotate(0.3deg);
+    -webkit-transform: rotate(0.3deg);
+}
+
+
+.goBetween {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.matchPercent {
+	color: red;
+	position: absolute;
+	left: 440px;
+	top: 170px;
+}
+}
