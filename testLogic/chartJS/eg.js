@@ -30,49 +30,49 @@ characteristics.on("child_added", function(snapshot) {
     console.log(currentFace);
     age = currentFace.faces[0].attributes.age.value;
     faceWidth = currentFace.faces[0].face_rectangle.width;
-    populateChart();
+    populateChart(currentFace.faces[0]);
     }  
 });
 
-function populateChart() {
-    calculateEyes();
-    calculateEyebrows();
-    calculateMouth();
-    calculateNose()
-    mainProgram();
+function populateChart(face) {
+    calculateEyes(face);
+    calculateEyebrows(face);
+    calculateMouth(face);
+    calculateNose(face)
+    mainProgram(face);
 }
 
 // calculate using distance formula
-function calculateEyes() {
-    var xCoords = (currentFace.faces[0].landmark.left_eye_center.x - currentFace.faces[0].landmark.right_eye_center.x);
-    var yCoords = (currentFace.faces[0].landmark.left_eye_center.y - currentFace.faces[0].landmark.right_eye_center.y);
+function calculateEyes(face) {
+    var xCoords = (face.landmark.left_eye_center.x - face.landmark.right_eye_center.x);
+    var yCoords = (face.landmark.left_eye_center.y - face.landmark.right_eye_center.y);
     var xRawDist = Math.sqrt((xCoords * xCoords));
     var yRawDist = Math.sqrt((yCoords * yCoords));
     var totalRawDist = xRawDist + yRawDist;
     eyes = (totalRawDist / faceWidth) * 100;
 }
 
-function calculateEyebrows() {
-    var xCoords = (currentFace.faces[0].landmark.left_eyebrow_upper_middle.x - currentFace.faces[0].landmark.right_eyebrow_upper_middle.x);
-    var yCoords = (currentFace.faces[0].landmark.left_eyebrow_upper_middle.y - currentFace.faces[0].landmark.right_eyebrow_upper_middle.y);
+function calculateEyebrows(face) {
+    var xCoords = (face.landmark.left_eyebrow_upper_middle.x - face.landmark.right_eyebrow_upper_middle.x);
+    var yCoords = (face.landmark.left_eyebrow_upper_middle.y - face.landmark.right_eyebrow_upper_middle.y);
     var xRawDist = Math.sqrt((xCoords * xCoords));
     var yRawDist = Math.sqrt((yCoords * yCoords));
     var totalRawDist = xRawDist + yRawDist;
     eyebrows = (totalRawDist / faceWidth) * 100;
 }
 
-function calculateMouth() {
-    var xCoords = (currentFace.faces[0].landmark.mouth_left_corner.x - currentFace.faces[0].landmark.mouth_right_corner.x);
-    var yCoords = (currentFace.faces[0].landmark.mouth_left_corner.y - currentFace.faces[0].landmark.mouth_right_corner.y);
+function calculateMouth(face) {
+    var xCoords = (face.landmark.mouth_left_corner.x - face.landmark.mouth_right_corner.x);
+    var yCoords = (face.landmark.mouth_left_corner.y - face.landmark.mouth_right_corner.y);
     var xRawDist = Math.sqrt((xCoords * xCoords));
     var yRawDist = Math.sqrt((yCoords * yCoords));
     var totalRawDist = xRawDist + yRawDist;
     mouth = (totalRawDist / faceWidth) * 100;
 }
 
-function calculateNose() {
-    var xCoords = (currentFace.faces[0].landmark.nose_left.x - currentFace.faces[0].landmark.nose_right.x);
-    var yCoords = (currentFace.faces[0].landmark.nose_left.y - currentFace.faces[0].landmark.nose_right.y);
+function calculateNose(face) {
+    var xCoords = (face.landmark.nose_left.x - face.landmark.nose_right.x);
+    var yCoords = (face.landmark.nose_left.y - face.landmark.nose_right.y);
     var xRawDist = Math.sqrt((xCoords * xCoords));
     var yRawDist = Math.sqrt((yCoords * yCoords));
     var totalRawDist = xRawDist + yRawDist;
