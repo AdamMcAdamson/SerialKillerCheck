@@ -1,18 +1,13 @@
-var firebase = require('../node_modules/firebase');
-
+var firebase = require('firebase');
 var fs = require('fs');
 
-var querystring = require('querystring');
-var https = require('https');
+var request = require('request');
 
-var firebaseSetup = JSON.parse(fs.readFileSync('../../../firebaseSetup.firebase', 'utf8'));
-
+// var firebaseSetup = JSON.parse(fs.readFileSync('../../../firebaseSetup.firebase', 'utf8'));
+var firebaseSetup = require('../../../firebaseSetup.js');
+// var facePPSetup = JSON.parse(fs.readFileSync('../../../facePPSetup.faceplusplus', 'utf8'));
+var facePPSetup = require('../../../facePPSetup.js');
 firebase.initializeApp(firebaseSetup);
-
-firebase.database().ref('/tests').push({
-	testYo: "Yo waddup",
-	testDank: "I have Dank Memes"
-});
 
 var killerArray = [
 ["Gary Ridgway", "https://upload.wikimedia.org/wikipedia/commons/5/5c/Gary_Ridgway_Mugshot_11302001.jpg"],
@@ -22,51 +17,63 @@ var killerArray = [
 ];
 
 var skFirebase = firebase.database().ref('/killersInfo');
+var facePPForm = {};
+var backslash = '\\\\';
+var reOutBack = new RegExp(backslash, 'g');
+var reOutQuote = new RegExp('"', 'g');
 
+var count = 0;
+function getKiller(){
+	if(count < killerArray.length){
+		var killerName = killerArray[count][0];
 
-var host = 'www.thegamecrafter.com';
-var username = 'JonBob';
-var password = '*****';
-var apiKey = '*****';
-var sessionId = null;
-var deckId = '68DC5A20-EE4F-11E2-A00C-0858C0D5C2ED';
+		facePPForm.api_key = facePPSetup.api_key;
+		facePPForm.api_secret = facePPSetup.api_secret;
+		facePPForm.img_url = killerArray[count][1];
+		facePPForm.return_landmark = '1';
+		facePPForm.return_attributes = "gender,age,smiling,headpose,facequality,blur,eyestatus,ethnicity";
 
-function performRequest(endpoint, method, data, success) {
-  var dataString = JSON.stringify(data);
-  var headers = {};
-  
-  if (method == 'GET') {
-    endpoint += '?' + querystring.stringify(data);
-  }
-  else {
-    headers = {
-      'Content-Type': 'application/json',
-      'Content-Length': dataString.length
-    };
-  }
-  var options = {
-    host: host,
-    path: endpoint,
-    method: method,
-    headers: headers
-  };
+		var query = "?api_key=" + facePPForm.api_key + "&api_secret=" + facePPForm.api_secret + "&image_url=" + facePPForm.img_url + "&return_landmark=1&return_attributes=gender,age,smiling,headpose,facequality,blur,eyestatus,ethnicity";
+		console.log(facePPForm.api_key);
+		console.log(facePPForm.img_url);
 
-  var req = https.request(options, function(res) {
-    res.setEncoding('utf-8');
+		// Face++ api endpoint
+		// https://api-us.faceplusplus.com/facepp/v3/detect
 
-    var responseString = '';
+		console.log("\n--------------\nQUERY URL: " + query + "\n--------------\n");
+		request({
+			url: "https://api-us.faceplusplus.com/facepp/v3/detect" + query,
+			method: "POST",
+			json: true,
+			body: facePPForm
+		}, function(err, response, body){
+			// console.log(response);
 
-    res.on('data', function(data) {
-      responseString += data;
-    });
+			var out = JSON.stringify(body, 2).replace(reOutBack, '');
+			console.log(out);
+			skFirebase.child("serialKiller-" + count).set({
+				count: count,
+				namePrint: killerName,
+				pictureURL: facePPForm.img_url,
+				jsonOut: out
+			});
+			setTimeout(function(){
+				count++;	
+				getKiller();
+			}, 2000);
+		});
 
-    res.on('end', function() {
-      console.log(responseString);
-      var responseObject = JSON.parse(responseString);
-      success(responseObject);
-    });
-  });
-
-  req.write(dataString);
-  req.end();
+	} else {
+		console.log("\n\nKILLERS ADDED: " + count);
+		console.log("EXITING APP");
+		process.exit();
+	}
 }
+getKiller();
+
+skFirebase.on("child_added", function(snapshot){
+	var value = snapshot.val();
+	if(value.count === 0){
+		fs.writeFile("exampleOut.json", JSON.stringify(JSON.parse(value.jsonOut), 2));
+	}
+});
