@@ -19,7 +19,8 @@ var count = 2;
 var matchedKiller;
 var killerAge = 0;
 var killerEyes = 0;
-var killerEthnicity = "";
+var killerEyebrows = 0;
+var killerMouth = 0;
 
 killerCharacteristics.on("child_added", function(snapshot) {
     if(count === snapshot.val().count) {
@@ -33,11 +34,10 @@ killerCharacteristics.on("child_added", function(snapshot) {
 });
 
 function populateChartKiller() {
-    console.log(killerAge);
-    console.log(killerGender);
-    console.log(killerEthnicity);
-    mainProgram();
     calculateKillerEyes();
+    calculateKillerEyebrows();
+    calculateKillerMouth();
+    mainProgram();
 }
 
 // calculate using distance formula
@@ -47,9 +47,25 @@ function calculateKillerEyes() {
     var xRawDist = Math.sqrt((xCoords * xCoords));
     var yRawDist = Math.sqrt((yCoords * yCoords));
     var totalRawDist = xRawDist + yRawDist;
-    killerEyes = totalRawDist / matchedKiller.faces[0].face_rectangle.width;
+    killerEyes = (totalRawDist / matchedKiller.faces[0].face_rectangle.width) * 100;
+}
 
-    console.log("LOOK " + killerEyes);
+function calculateKillerEyebrows() {
+    var xCoords = (matchedKiller.faces[0].landmark.left_eyebrow_upper_middle.x - matchedKiller.faces[0].landmark.right_eyebrow_upper_middle.x);
+    var yCoords = (matchedKiller.faces[0].landmark.left_eyebrow_upper_middle.y - matchedKiller.faces[0].landmark.right_eyebrow_upper_middle.y);
+    var xRawDist = Math.sqrt((xCoords * xCoords));
+    var yRawDist = Math.sqrt((yCoords * yCoords));
+    var totalRawDist = xRawDist + yRawDist;
+    killerEyebrows = (totalRawDist / matchedKiller.faces[0].face_rectangle.width) * 100;
+}
+
+function calculateKillerMouth() {
+    var xCoords = (matchedKiller.faces[0].landmark.mouth_left_corner.x - matchedKiller.faces[0].landmark.mouth_right_corner.x);
+    var yCoords = (matchedKiller.faces[0].landmark.mouth_left_corner.y - matchedKiller.faces[0].landmark.mouth_right_corner.y);
+    var xRawDist = Math.sqrt((xCoords * xCoords));
+    var yRawDist = Math.sqrt((yCoords * yCoords));
+    var totalRawDist = xRawDist + yRawDist;
+    killerMouth = (totalRawDist / matchedKiller.faces[0].face_rectangle.width) * 100;
 }
 
 
