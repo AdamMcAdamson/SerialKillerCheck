@@ -56,7 +56,7 @@ function getKiller(){
 
 			var out = JSON.stringify(body, 2).replace(reOutBack, '');
 			console.log(out);
-			skFirebase.child("serialKiller-" + count).set({
+			skFirebase.child("serialKiller-" + count).update({
 				count: count,
 				namePrint: killerName,
 				nameSearch: killerName,
