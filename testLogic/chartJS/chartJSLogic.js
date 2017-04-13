@@ -4,7 +4,7 @@ $(document).ready(function() {
     // instantiate Chart class
     var ctx = $("#compareChart");
     // instantiate Radar chart style
-    var killerCompare = new Chart(ctx, {
+   setTimeout(function() {var killerCompare = new Chart(ctx, {
             type: "radar",
             data: {
                 labels: ["Jan", "Feb", "March", "April", "May"],
@@ -63,7 +63,8 @@ $(document).ready(function() {
                 }
             }
         }
-    });
 
+    });
+     }, 1000); 
 
 });
