@@ -11,7 +11,7 @@ var chart = $("#compareChart");
 // where the wiki response will go.  Include inside <p> tags
 var wikiInfo = $("#description");
 
-var time = 0;
+var completion;
 
 var firebaseConfig = firebaseSetup;
 var facePPConfig = facePPSetup;
@@ -54,6 +54,13 @@ function showText(target, message, index, interval) {
     setTimeout(function () { showText(target, message, index, interval); }, interval);
   }
 }
+function completionPercent(cur, max){
+	$("#second").hide();
+	$("#first").show();
+	var stepVal = 100/max;
+	var curPercent = parseInt(stepVal*(cur+1));
+	$("#welcome").empty().html("<div class='valign-wrapper center-align' style='width: 20%; margin: 0 auto; color: lightgray; margin-top: 15%;'><h1 id='test'>"+curPercent+"% Complete</h1></div>");
+};
 
 // displays the content display version of the page once the face++ and wiki calls return the data
 function display() {
@@ -86,17 +93,11 @@ $(document).ready(function(){
 		$("#first").hide();
 		$("body").removeClass("bodyThree").addClass("bodyTwo");
 	}, 24);
+	// }, 24750);
 	$('#buttonName').on("click", function() {
 		// display();
 		userImage(input.val().trim());
-		completion = setInterval(function(){
-			$("#second").hide();
-			$("#first").show();
-			$("#welcome").empty().html("<div class='valign-wrapper center-align' style='width: 20%; margin: 0 auto; color: lightgray; margin-top: 15%;'><h1 id='test'>"+time+"% Complete</h1></div>");
-			time++;
-			if (time === 102) {
-				clearInterval(completion);
-		}}, 300);
+		completionPercent(-1, 100);
 	});
 });
 
@@ -119,6 +120,7 @@ function userImage(userImgUrl){
 	  dataType: "json"
 	}).done(function(response){
 		userData = response;
+		completionPercent(0, killerArray.length);
 		setTimeout(function(){
 			compareImages(response.faces[0].face_token);
 		}, 1500);
@@ -127,7 +129,7 @@ function userImage(userImgUrl){
 
 function compareImages(userFaceToken){
 	compareQuery = "&face_token1=" + userFaceToken;
-	compareQuery += "&image_url2=" + killerArray[countCompared].pictureURL;
+	compareQuery += "&face_token2=" + JSON.parse(killerArray[countCompared].jsonOut).faces[0].face_token;
 	$.ajax({
 	  type: "POST",
 	  url: compareURL + query + compareQuery,
@@ -138,7 +140,8 @@ function compareImages(userFaceToken){
 		console.log("\n\n-------CONFIDENCE-------");
 		console.log(response.confidence + "\n---------------------");
 		confidenceArray[countCompared] = parseFloat(response.confidence);
-		if(countCompared < killerArray.length-1){
+		completionPercent(countCompared +1, killerArray.length+1);
+		if(countCompared < killerArray.length - 1){
 		   	setTimeout(function (){
 		   		countCompared++;
 		   		compareImages(userFaceToken);
@@ -146,7 +149,7 @@ function compareImages(userFaceToken){
 		   	}, 1500);
 		}
 		else{
-		    console.log("COMPLETED " +(countCompared+1)+" COMPARE CALLS\n");
+		    console.log("COMPLETED " + (countCompared + 1) + " COMPARE CALLS\n");
 		    highestConfidence();
 			return;
 		}
@@ -161,7 +164,7 @@ function highestConfidence(){
 		}
 	}
 	var confidenceOut = parseInt(((confidenceArray[index] + ((100 - confidenceArray[index])/4) )*100))/100;
-	percentage.html(confidenceOut	 + '%<br>Match');
+	percentage.html(confidenceOut + '%<br>Match');
 	populatePage(killerArray[index]);
 }
 
