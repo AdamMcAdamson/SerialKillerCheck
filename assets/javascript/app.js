@@ -15,8 +15,19 @@ var wikiInfo = $("#description");
 
 var completion;
 
-var firebaseConfig = firebaseSetup;
-var facePPConfig = facePPSetup;
+var firebaseConfig = {
+	apiKey: "AIzaSyCJ5GYjTIt2h4LxAzomt2KXghaRVB986JY",
+	authDomain: "serialkillercheck.firebaseapp.com",
+	databaseURL: "https://serialkillercheck.firebaseio.com",
+	projectId: "serialkillercheck",
+	storageBucket: "serialkillercheck.appspot.com",
+	messagingSenderId: "497528774120"
+}
+
+var facePPConfig = {
+	api_key: "GGirhQNvV0_CtFgy4IgSwCASYBqV1Yla",
+	api_secret: "u-goCfJWEuKHyhCv5GHRDUtImw-f4uve"
+};
 
 firebase.initializeApp(firebaseConfig);
 
@@ -161,7 +172,6 @@ skRef.on("child_added", function(snapshot){
 
 
 function userImage(userImgUrl){
-	console.log("DEBUG: userImgUrl=" + userImgUrl);
 	facePPForm.img_url = userImgUrl;
 	$.ajax({
 	  type: "POST",
@@ -170,7 +180,6 @@ function userImage(userImgUrl){
 	  dataType: "json"
 	}).done(function(response){
 		if(response.faces.length < 1){
-			console.log("INVALID PICTURE: No face found");
 			resetInput();
 			return;
 		}else{	
@@ -194,9 +203,6 @@ function compareImages(userFaceToken){
 	  data: facePPFormCompare,
 	  dataType: "json"
 	}).done(function(response){
-		// console.log(JSON.stringify(response, 2));
-		console.log("\n\n-------CONFIDENCE-------");
-		console.log(response.confidence + "\n---------------------");
 		confidenceArray[countCompared] = parseFloat(response.confidence);
 		completionPercent(countCompared +1, killerArray.length+1);
 		if(countCompared < killerArray.length - 1){
@@ -207,7 +213,6 @@ function compareImages(userFaceToken){
 		   	}, 1500);
 		}
 		else{
-		    console.log("COMPLETED " + (countCompared + 1) + " COMPARE CALLS\n");
 		    highestConfidence();
 			return;
 		}
@@ -294,7 +299,7 @@ function calculateNose(face) {
 }
 
 
-console.log("ready");
+
 function makeCompareChart(userData, killerData) {
     // instantiate Chart class
     var ctx = $("#compareChart");
@@ -305,7 +310,6 @@ function makeCompareChart(userData, killerData) {
                 labels: ["Age", "Eyes", "Eyebrows", "Mouth", "Nose"],
                 datasets: [{
                         label: "You",
-                        // characteristics populated in eg.js
                         data: userData,
                         backgroundColor: "rgba(179,181,198,0.2)",
                         borderColor: "rgba(179,181,198,1)",
@@ -317,7 +321,6 @@ function makeCompareChart(userData, killerData) {
                  	   },
                  	   {
                         label: "Serial Killer",
-                        // characteristics populated in eg.js
                         data: killerData,
                         backgroundColor: "rgba(255,99,132,0.2)",
                         borderColor: "rgba(255,99,132,1)",
@@ -347,12 +350,8 @@ function calcFaceDisplay(face, type, url){
 	tmpImg.src = url;
 	$(tmpImg).on('load',function(){
 		var imgElem = $('#' + type + 'Pic');
-		console.log(parseInt(imgElem.parent().parent().css('height')));
 		var imgWidth = tmpImg.width;
 		var imgHeight = tmpImg.height;
-		// type = "user" || "killer"
-		// var imgWidth = imgElem.get(0).naturalWidth;
-		// var imgHeight = imgElem.get(0).naturalHeight;
 
 		var imgCenterX = imgWidth/2;
 		var imgCenterY = imgHeight/2;
@@ -373,20 +372,9 @@ function calcFaceDisplay(face, type, url){
 
 		var cssInfluencerPercent = 100;
 		var shift = false;
-		// if true, {{css(outImgWidth = 100%)}}; else {{css(outImgHeight = 100%)}}
 		var isWidthInfluencer;
 
 		var imgScale, marginNew;
-		// if(faceWidth * 3 < imgWidth){
-		// 	outImgWidth = imgWidth/3;
-		// }
-		// if(faceHeight * 3 < imgHeight){
-		// 	outImgHeight = imgHeight/3;
-		// }
-
-		if(outImgWidth * 0.9 > outImgHeight || outImgHeight * 0.7 > outImgWidth){
-			shift = true;
-		}
 
 		if(imgWidth < (0.85 * imgHeight)){
 			isWidthInfluencer = true;
@@ -397,159 +385,28 @@ function calcFaceDisplay(face, type, url){
 		if(isWidthInfluencer){
 
 
-			console.log("WIDTH");
-			// cssInfluencerPercent = imgHeight/outImgHeight;
 			imgElem.css('width', (100)+'%');
 			displayImgHeight = parseInt(imgElem.parent().parent().css('height'))-96;
 			displayImgWidth = parseInt(imgElem.parent().parent().css('width'))-16;
 			var ratio = displayImgWidth/imgWidth;
-			// var centerXOffset = (imgCenterX - faceCenterX);
-			// imgScaleElem.css('margin-left', marginNew + "px");
-			// console.log("IMAGE SCALE - "  + );
 			var newHeight = (imgHeight*ratio);
-
-			console.log("NEW Height: " + newHeight);
-			console.log("ImgHeight: " + imgHeight);	
 			var margin = (newHeight - displayImgHeight)/2
-
-
-			//*(imgHeight/displayImgSize));
-			console.log(margin);
 			imgElem.css('margin-top', (-1 * margin) + "px");	
-
-			// console.log("WIDTH");
-
-			// // cssInfluencerPercent = imgWidth/outImgWidth;
-
-			// // console.log("\n\n\nINFLUENCE (PRE-SHIFT): " + cssInfluencerPercent);
-			// // if(cssInfluencerPercent*imgHeight < imgWidth * 4/3){
-			// // 	cssInfluencerPercent += cssInfluencerPercent*((imgWidth*3/2) - imgHeight)/100; 
-			// // }
-			// imgElem.css('width',(100) +'%');
-			// imgScale = imgWidth/parseInt(imgElem.parent().parent().css('width'));
-			// console.log("imgScale (Y): " + imgScale);
-
-			// var centerYOffset = (imgCenterY - faceCenterY);
-
-			// var change = parseInt(imgElem.parent().parent().css('height'))/2 - (imgCenterY/imgScale) + centerYOffset;
-
-			// var change = imgCenterY/imgScale - parseInt(imgElem.parent().parent().css('height'))/2;
-
-			// var easyShift = -1 * ((imgCenterY) - parseInt(imgElem.parent().parent().css('width'))/2)/imgScale;
-			// // -----------------
-			// // imgScaleElem.css('margin-left', marginNew + "px");
-
-			// if(-1 * easyShift > faceTop){
-			// 	easyShift = -1 * faceLeft + 1;
-			// }
-			// if(easyShift > 0){
-			// 	easyShift = 0;
-			// }
-
-			// console.log("EASY SHIFT: " + easyShift);
-			// console.log("SHIFTING: " + shift);
-			// if(shift){
-			// 	imgElem.css('margin-top', easyShift + "px");
-			// }
-
-			// console.log("Margin-LEFT grab: " + imgElem.css('margin-left'));
-
-			// imgElem.css("margin-left", '0');
-
 		}
 		else{
-
-
-			console.log("HEIGHT");
-			// cssInfluencerPercent = imgHeight/outImgHeight;
 			imgElem.css('height', (100)+'%');
 			displayImgHeight = parseInt(imgElem.parent().parent().css('height'))-96;
 			displayImgWidth = parseInt(imgElem.parent().parent().css('width'))-16;
 			var ratio = displayImgHeight/imgHeight;
-			// var centerXOffset = (imgCenterX - faceCenterX);
-			// imgScaleElem.css('margin-left', marginNew + "px");
-			// console.log("IMAGE SCALE - "  + );
 			var newWidth = (imgWidth*ratio);
-
-			// var faceOffset = (faceCenterX*ratio) - (faceLeft*ratio);
-
 			var rightGap = imgWidth - faceRight;
-
 			var gapDifference = faceLeft - rightGap;
-
-
-
-			console.log("NEW Width: " + newWidth);
-			console.log("ImgWidth: " + imgWidth);	
 			var margin = (newWidth - displayImgWidth)/2 + (gapDifference*ratio)/2;
 
-			console.log(margin);
-
-			//*(imgHeight/displayImgSize));
-			if(margin > 0){
-				
+			if(margin > 0){				
 				imgElem.css('margin-left', (-1 * margin) + "px");	
-			
 			}
-			// console.log("imgScale (X): " + imgScale);
-
-			// var change = - 1 * (parseInt(imgElem.parent().parent().css('width'))/2 - (imgCenterX/imgScale) + centerXOffset/imgScale);
-			// console.log("MARGIN-LEFT: " + change)
-			// imgElem.css('margin-left', change + "px");	
-			
-			// var easyShift = ((faceCenterX) - parseInt(imgElem.parent().parent().css('height'))/2)/imgScale;
-
-
-			// if(-1 * easyShift > faceLeft){
-			// 	easyShift = -1 * faceLeft + 1;
-			// }
-			// if(easyShift > 0){
-			// 	easyShift = 0;
-			// }
-
-			// if(-1 * change > faceLeft){
-			// 	change = -1 * faceLeft + 1;
-			// }
-			// if(change > 0){
-			// 	change = 0;
-			// }
-
-
-
-			// console.log("EASY SHIFT: " + easyShift);
-			// console.log("SHIFTING: " + shift);
-			// if(shift){
-			// 	imgElem.css('margin-left', easyShift + "px");	
-			// }
-			// imgElem.css("margin-top", 0);
 		}
-		
-
-
-		// var imgHeightScale = parseInt(imgElem.parent().parent().css('height'))/imgHeight;
-
-		// *(1+cssInfluencerPercent/100);
-		// *(1+cssInfluencerPercent/100);
-
-		// var currentMarginLeft = parseInt(imgElem.css('margin-left'));
-		// var currentMarginTop = parseInt(imgElem.css('margin-top'));
-
-		// var marginLeftNew = currentMarginLeft + centerOffset;
-		// var marginRightNew = currentMarginTop + centerYOffset;
-
-		// console.log("\nElement: " + imgElem.toString()	 + " Log: " + log);
-		// console.log('---------------');
-		console.log("ImageWidth: " + imgWidth + " ImageHeight: " + imgHeight);
-		console.log("ImageCenterX: " + imgCenterX + " ImageCenterY: " + imgCenterY);
-		console.log("\n------------\nFaceCenterX: " + faceCenterX + " FaceCenterY: " + faceCenterY);
-		console.log("FaceLeft: " + faceLeft + " FaceTop: " + faceTop);
-		console.log("FaceWidth: " + faceWidth + " FaceHeight: " + faceHeight);
-		// console.log("------------\n\nOutImageWidth: " + outImgWidth + " OutImageHeight: " + outImgHeight);
-		console.log("------\nisWidthInfluencer: " + isWidthInfluencer); // + " CssInfluencerPercent: " + cssInfluencerPercent + '%');
-		// console.log("------\nCenterXOffset: " + centerOffset);
-		// console.log("DefaultMarginLeft: " + currentMarginLeft + " DefaultMarginTop: " + currentMarginTop);
-		// console.log("MarginLeftNew: " + marginNew);
-		// imgElem.css('margin-top',  marginRightNew + "px");
 	});
 }
 
