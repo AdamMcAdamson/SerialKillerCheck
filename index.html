@@ -1,9 +1,70 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Serial Killer Face Analyzer</title>
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/animista.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<script src="testLogic/chartJS/chartJSLogic.js"></script>
 </head>
-<body>
+<body class="bodyOne" style="padding-top: 90px; font-family: typeWriter;">
 
+	<!-- This is the div that first shows when page loads -->
+	<div class="container preContainer" id="first">
+		<div class="row">
+			<div class="col m12" id="welcome"><div class="valign-wrapper text-flicker-in-glow center-align welcome"><h1>Welcome</h1></div></div>
+		</div>
+	</div>
+
+	<!-- after initial animations, this div asks for input from user-->
+	<div class="container preContainer" id="second">
+		<div class="row">
+			<div class="col m12" id="welcome"><div class="text-flicker-in-glow center-align URLInput">
+				<div class="row"><h2>Enter the URL of the test subject's picture</h2></div>
+				<div class="row">
+					<input id="urlInput" class="inputBox"></input><button id="buttonName" class="buttonInverse">Submit</button></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- This is the div that is shown for the final display of results -->
+	<div class="containerMain" id="third">
+		<div class="row valign-wrapper">
+			<div class="col m12 border whiteText">
+				<div class="matchPercent center-align">
+					<h3 id="percentage">67%<br>Match</h3>
+				</div>
+				<div class="polaroidUser">
+					<div class="goBetween">
+						<img id="userPic" src="assets/images/macabre.jpg" class="pic">
+					</div>
+				</div>
+				<div class="polaroidKiller">
+					<div class="goBetween">
+						<img id="killerPic" src="assets/images/macabre.jpg" class="pic">
+					</div>
+				</div>
+				<div class="polaroidChart">
+					<div class="goBetween">
+						<canvas id="compareChart" class="pic"></canvas>
+					</div>
+				</div>
+				<div class="skInfo" id="description">
+					<p> Brian Griffin: You're really going to take back donated gifts on Christmas Eve?  Peter Griffin: Yes, now here's the plan. We'll enter through the air conditioning duct here. Which will be guarded by lasers three inches above the floor, now you'll have to squeeze yourself to the size of about a sponge and then crawl across the floor like a dolphin or some other amphibious mammal.  Brian: Can I buy some pot from you?
+ 					Peter Griffin: This is even worse then when we went to see the "Vagina Monologues".  Talking Vagina: [on stage at a comedy club] You know I heard they're using Jeff 				Gillooly in the hunt for Osama Bin Laden... Jeff Gillooly. [no laughter]  Talking Vagina: Okay, that one wasn't so fresh, but you knoooow...
+ 					Stewie Griffin: If I choose to make stool in my pants right now, you're the only one here to change me. What do you think of that, hmm?  Brian Griffin: I'm not going to change you.  Stewie Griffin: What?  Brian Griffin: I said, I'm not going to change you.  Stewie Griffin: You can't be serious. Well, what if I make a fudgie? Well, I just won't. I just won't, that's all. I just won't. Blast! I just did! Brian Griffin: You're really going to take back donated gifts on Christmas Eve?  Peter Griffin: Yes, now here's the plan. We'll enter through the air conditioning duct here. Which will be guarded by lasers three inches above the floor, now you'll have to squeeze yourself to the size of about a sponge and then crawl across the floor like a dolphin or some other amphibious mammal.  Brian: Can I buy some pot from you?
+ 					Peter Griffin: This is even worse then when we went to see the "Vagina Monologues".  Talking Vagina: [on stage at a comedy club] You know I heard they're using Jeff Gillooly in the hunt for Osama Bin Laden... Brian Griffin: You're really going to take back donated gifts on Christmas Eve?  Peter Griffin: Yes, now here's the plan. We'll enter through the air conditioning duct here. Which will be guarded by lasers three inches above the floor, now you'll have to squeeze yourself to the size of about a sponge and then crawl across the floor like a dolphin or some other amphibious mammal.  Brian: Can I buy some pot from you?
+ 					Peter Griffin: This is even worse then when we went to see the "Vagina Monologues".  Talking Vagina: [on stage at a comedy club] You know I heard they're using Jeff Gillooly in the hunt for Osama Bin Laden... 
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="assets/javascript/app.js"></script>
+<script src="testLogic/node/mediaWikiParse/wikiParse.js" type="text/javascript"></script>
+<body>
 </body>
 </html>
