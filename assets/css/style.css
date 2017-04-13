@@ -118,16 +118,36 @@
 
 .skInfo {
 	position: absolute;
-	width: 525px;
+	/*width: 525px;
 	height: 665px;
 	overflow: hidden;
 	left: 770px;
-	top: 160px;
+	top: 160px;*/
 	transform: rotate(1deg);
 	-ms-transform: rotate(1deg);
     -webkit-transform: rotate(1deg);
 	text-align: justify;
 }
+
+.skInfoRelative > p {
+	max-height: 90%;
+	overflow: hidden;
+}
+
+.skInfoRelative {
+	width: 525px;
+	height: 665px;
+	overflow: hidden;
+	left: 770px;
+	top: 160px;
+	position: relative;
+}
+
+.read-more {
+	position: absolute;
+	bottom: 10px;
+}
+
 
 .pic {
 	position: absolute;
@@ -141,10 +161,10 @@
 .polaroidUser {
 	padding: 20px 8px 76px 8px;
 	background-image: url(../images/polaroid.png);
-	background-size: 100%;
+	background-size: 100% 100%;
 	position: absolute;
 	width: 289px;
-	height: 360px;
+	height: 420px;
 	left: 186px;
 	top: 114px;
 	transform: rotate(-1.7deg);
@@ -154,9 +174,9 @@
 }
 
 .polaroidKiller {
-	padding: 20px 8px 76px 8px;
+	padding: 20px 8px 68px 8px;
 	background-image: url(../images/polaroid.png);
-	background-size: 100%;
+	background-size: 100% 100%;
 	position: absolute;
 	width: 289px;
 	height: 360px;
@@ -171,7 +191,7 @@
 .polaroidChart {
 	padding: 20px 8px 76px 8px;
 	background-image: url(../images/polaroid.png);
-	background-size: 100%;
+	background-size: 100% 100%;
 	position: absolute;
 	width: 289px;
 	height: 360px;
@@ -216,17 +236,27 @@
 
 .skInfo {
 	position: absolute;
-	width: 435px;
-	height: 570px;
-	overflow: hidden;
-	left: 645px;
-	top: 126px;
 	transform: rotate(1deg);
 	-ms-transform: rotate(1deg);
     -webkit-transform: rotate(1deg);
 	text-align: justify;
 }
+.skInfoRelative {
+	position: relative;
+	width: 435px;
+	height: 570px;
+	overflow: hidden;
+	left: 645px;
+	top: 126px;
+}
 
+.skInfoRelative > p {
+	max-height: 84%;
+}
+.read-more {
+	position: absolute;
+	bottom: 10px;
+}
 .pic {
 	position: absolute;
 	min-width: 100%;
@@ -239,10 +269,10 @@
 .polaroidUser {
 	padding: 17px 6px 64px 7px;
 	background-image: url(../images/polaroid.png);
-	background-size: 100%;
+	background-size: 100% 100%;
 	position: absolute;
 	width: 240px;
-	height: 300px;
+	height: 352px;
 	left: 160px;
 	top: 114px;
 	transform: rotate(-1.7deg);
@@ -254,10 +284,10 @@
 .polaroidKiller {
 	padding: 17px 6px 64px 7px;
 	background-image: url(../images/polaroid.png);
-	background-size: 100%;
+	background-size: 100% 100%;
 	position: absolute;
 	width: 240px;
-	height: 300px;
+	height: 352px;
 	left: 353px;
 	top: 254px;
 	transform: rotate(2.3deg);
@@ -269,7 +299,7 @@
 .polaroidChart {
 	padding: 17px 6px 64px 7px;
 	background-image: url(../images/polaroid.png);
-	background-size: 100%;
+	background-size: 100% 100%;
 	position: absolute;
 	width: 240px;
 	height: 300px;
@@ -306,15 +336,28 @@
 
 .skInfo {
 	position: absolute;
+	transform: rotate(1deg);
+	-ms-transform: rotate(1deg);
+    -webkit-transform: rotate(1deg);
+	text-align: justify;
+}
+
+.skInfoRelative {
 	width: 350px;
 	height: 465px;
 	overflow: hidden;
 	left: 515px;
 	top: 95px;
-	transform: rotate(1deg);
-	-ms-transform: rotate(1deg);
-    -webkit-transform: rotate(1deg);
-	text-align: justify;
+	position: relative;
+}
+
+.skInfoRelative > p {
+	max-height: 80%;
+}
+
+.read-more {
+	position: absolute;
+	bottom: 10px;
 }
 
 .pic {
@@ -327,12 +370,12 @@
 }
 
 .polaroidUser {
-	padding: 14px 6px 54px 6px;
+	padding: 14px 6px 46px 6px;
 	background-image: url(../images/polaroid.png);
-	background-size: 100%;
+	background-size: 100% 100%;
 	position: absolute;
 	width: 192px;
-	height: 242px;
+	height: 272px;
 	left: 121px;
 	top: 85px;
 	transform: rotate(-1.7deg);
@@ -342,12 +385,12 @@
 }
 
 .polaroidKiller {
-	padding: 14px 6px 54px 6px;
+	padding: 14px 6px 46px 6px;
 	background-image: url(../images/polaroid.png);
-	background-size: 100%;
+	background-size: 100% 100%;
 	position: absolute;
 	width: 192px;
-	height: 242px;
+	height: 272px;
 	left: 283px;
 	top: 220px;
 	transform: rotate(2.3deg);
@@ -359,12 +402,12 @@
 .polaroidChart {
 	padding: 14px 6px 54px 6px;
 	background-image: url(../images/polaroid.png);
-	background-size: 100%;
+	background-size: 100% 100%;
 	position: absolute;
 	width: 192px;
 	height: 242px;
 	left: 118px;
-	top: 336px;
+	top: 348px;
 	transform: rotate(0.3deg);
 	-ms-transform: rotate(0.3deg);
     -webkit-transform: rotate(0.3deg);
@@ -396,17 +439,28 @@
 
 .skInfo {
 	position: absolute;
-	width: 450px;
-	height: 600px;
-	overflow: hidden;
-	left: 138px;
-	top: 1000px;
 	transform: rotate(1deg);
 	-ms-transform: rotate(1deg);
     -webkit-transform: rotate(1deg);
 	text-align: justify;
 }
 
+.skInfoRelative {
+	width: 450px;
+	height: 600px;
+	overflow: hidden;
+	left: 138px;
+	top: 1000px;
+	position: relative;
+}
+
+.skInfoRelative > p {
+	max-height: 84%;
+}
+.read-more {
+	position: absolute;
+	bottom: 10px;
+}
 .pic {
 	position: absolute;
 	min-width: 100%;
@@ -419,12 +473,12 @@
 .polaroidUser {
 	padding: 17px 6px 64px 7px;
 	background-image: url(../images/polaroid.png);
-	background-size: 100%;
+	background-size: 100% 100%;
 	position: absolute;
 	width: 240px;
-	height: 300px;
-	left: 160px;
-	top: 179px;
+	height: 352px;
+	left: 152px;
+	top: 170px;
 	transform: rotate(-1.7deg);
 	-ms-transform: rotate(-1.7deg);
     -webkit-transform: rotate(-1.7deg);
@@ -434,11 +488,11 @@
 .polaroidKiller {
 	padding: 17px 6px 64px 7px;
 	background-image: url(../images/polaroid.png);
-	background-size: 100%;
+	background-size: 100% 100%;
 	position: absolute;
 	width: 240px;
-	height: 300px;
-	left: 353px;
+	height: 352px;
+	left: 363px;
 	top: 319px;
 	transform: rotate(2.3deg);
 	-ms-transform: rotate(2.3deg);
@@ -449,7 +503,7 @@
 .polaroidChart {
 	padding: 17px 6px 64px 7px;
 	background-image: url(../images/polaroid.png);
-	background-size: 100%;
+	background-size: 100% 100%;
 	position: absolute;
 	width: 240px;
 	height: 300px;
