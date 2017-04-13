@@ -11,86 +11,97 @@
   firebase.initializeApp(config);
 
 var database = firebase.database();
-var killerCharacteristics = database.ref("/killersInfo");
+var characteristics = database.ref("/killersInfo");
 
 
 // SERIAL KILLER 
 var count = 2;
-var matchedKiller;
-var killerAge = 0;
-var killerEyes = 0;
-var killerEyebrows = 0;
-var killerMouth = 0;
+var currentFace;
+var faceWidth;
+var age = 0;
+var eyes = 0;
+var eyebrows = 0;
+var mouth = 0;
+var nose = 0;
 
-killerCharacteristics.on("child_added", function(snapshot) {
+characteristics.on("child_added", function(snapshot) {
     if(count === snapshot.val().count) {
-    matchedKiller = JSON.parse(snapshot.val().jsonOut);
-    console.log(matchedKiller);
-    killerAge = matchedKiller.faces[0].attributes.age.value;
-    killerGender = matchedKiller.faces[0].attributes.gender.value;
-    killerEthnicity = matchedKiller.faces[0].attributes.ethnicity.value;
-    populateChartKiller();
+    currentFace = JSON.parse(snapshot.val().jsonOut);
+    console.log(currentFace);
+    age = currentFace.faces[0].attributes.age.value;
+    faceWidth = currentFace.faces[0].face_rectangle.width;
+    populateChart(currentFace.faces[0]);
     }  
 });
 
-function populateChartKiller() {
-    calculateKillerEyes();
-    calculateKillerEyebrows();
-    calculateKillerMouth();
-    mainProgram();
+function populateChart(face) {
+    calculateEyes(face);
+    calculateEyebrows(face);
+    calculateMouth(face);
+    calculateNose(face)
+    mainProgram(face);
 }
 
 // calculate using distance formula
-function calculateKillerEyes() {
-    var xCoords = (matchedKiller.faces[0].landmark.left_eye_center.x - matchedKiller.faces[0].landmark.right_eye_center.x);
-    var yCoords = (matchedKiller.faces[0].landmark.left_eye_center.y - matchedKiller.faces[0].landmark.right_eye_center.y);
+function calculateEyes(face) {
+    var xCoords = (face.landmark.left_eye_center.x - face.landmark.right_eye_center.x);
+    var yCoords = (face.landmark.left_eye_center.y - face.landmark.right_eye_center.y);
     var xRawDist = Math.sqrt((xCoords * xCoords));
     var yRawDist = Math.sqrt((yCoords * yCoords));
     var totalRawDist = xRawDist + yRawDist;
-    killerEyes = (totalRawDist / matchedKiller.faces[0].face_rectangle.width) * 100;
+    eyes = (totalRawDist / faceWidth) * 100;
 }
 
-function calculateKillerEyebrows() {
-    var xCoords = (matchedKiller.faces[0].landmark.left_eyebrow_upper_middle.x - matchedKiller.faces[0].landmark.right_eyebrow_upper_middle.x);
-    var yCoords = (matchedKiller.faces[0].landmark.left_eyebrow_upper_middle.y - matchedKiller.faces[0].landmark.right_eyebrow_upper_middle.y);
+function calculateEyebrows(face) {
+    var xCoords = (face.landmark.left_eyebrow_upper_middle.x - face.landmark.right_eyebrow_upper_middle.x);
+    var yCoords = (face.landmark.left_eyebrow_upper_middle.y - face.landmark.right_eyebrow_upper_middle.y);
     var xRawDist = Math.sqrt((xCoords * xCoords));
     var yRawDist = Math.sqrt((yCoords * yCoords));
     var totalRawDist = xRawDist + yRawDist;
-    killerEyebrows = (totalRawDist / matchedKiller.faces[0].face_rectangle.width) * 100;
+    eyebrows = (totalRawDist / faceWidth) * 100;
 }
 
-function calculateKillerMouth() {
-    var xCoords = (matchedKiller.faces[0].landmark.mouth_left_corner.x - matchedKiller.faces[0].landmark.mouth_right_corner.x);
-    var yCoords = (matchedKiller.faces[0].landmark.mouth_left_corner.y - matchedKiller.faces[0].landmark.mouth_right_corner.y);
+function calculateMouth(face) {
+    var xCoords = (face.landmark.mouth_left_corner.x - face.landmark.mouth_right_corner.x);
+    var yCoords = (face.landmark.mouth_left_corner.y - face.landmark.mouth_right_corner.y);
     var xRawDist = Math.sqrt((xCoords * xCoords));
     var yRawDist = Math.sqrt((yCoords * yCoords));
     var totalRawDist = xRawDist + yRawDist;
-    killerMouth = (totalRawDist / matchedKiller.faces[0].face_rectangle.width) * 100;
+    mouth = (totalRawDist / faceWidth) * 100;
+}
+
+function calculateNose(face) {
+    var xCoords = (face.landmark.nose_left.x - face.landmark.nose_right.x);
+    var yCoords = (face.landmark.nose_left.y - face.landmark.nose_right.y);
+    var xRawDist = Math.sqrt((xCoords * xCoords));
+    var yRawDist = Math.sqrt((yCoords * yCoords));
+    var totalRawDist = xRawDist + yRawDist;
+    nose = (totalRawDist / faceWidth) * 100;
 }
 
 
 // SERIAL KILLER 2 
-var count2 = 1;
-var matchedKiller2;
-var killerAge2 = 0;
-var killerEyes2 = 0;
-var killerEthnicity2 = "";
+// var count2 = 1;
+// var matchedKiller2;
+// var killerAge2 = 0;
+// var killerEyes2 = 0;
+// var killerEthnicity2 = "";
 
-killerCharacteristics.on("child_added", function(snapshot) {
-    if(count2 === snapshot.val().count) {
-    matchedKiller2 = JSON.parse(snapshot.val().jsonOut);
-    console.log(matchedKiller2);
-    killerAge2 = matchedKiller2.faces[0].attributes.age.value;
-    killerGender2 = matchedKiller2.faces[0].attributes.gender.value;
-    killerEthnicity2 = matchedKiller2.faces[0].attributes.ethnicity.value;
-    populateChartKiller2();
-    }  
-});
+// face.on("child_added", function(snapshot) {
+//     if(count2 === snapshot.val().count) {
+//     matchedKiller2 = JSON.parse(snapshot.val().jsonOut);
+//     console.log(matchedKiller2);
+//     killerAge2 = matchedKiller2.faces[0].attributes.age.value;
+//     killerGender2 = matchedKiller2.faces[0].attributes.gender.value;
+//     killerEthnicity2 = matchedKiller2.faces[0].attributes.ethnicity.value;
+//     populateChartKiller2();
+//     }  
+// });
 
-function populateChartKiller2() {
-    console.log(killerAge2);
-    console.log(killerGender2);
-    console.log(killerEthnicity2);
-    mainProgram();
-}
+// function populateChartKiller2() {
+//     console.log(killerAge2);
+//     console.log(killerGender2);
+//     console.log(killerEthnicity2);
+//     mainProgram();
+// }
 
