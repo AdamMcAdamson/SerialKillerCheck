@@ -1,15 +1,16 @@
-$(document).ready(function() {
+// $(document).ready(function() {
+// });
     console.log("ready");
-
+    function mainProgram() {
     // instantiate Chart class
     var ctx = $("#compareChart");
     // instantiate Radar chart style
     var killerCompare = new Chart(ctx, {
             type: "radar",
             data: {
-                labels: ["Jan", "Feb", "March", "April", "May"],
+                labels: ["Gender", "Age", "Ethnicity", "Nose", "Ears"],
                 datasets: [{
-                        label: "2013 Temperature Avgs (in Farenheit)",
+                        label: "You",
                         data: [10, 20, 30, 40, 50],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
@@ -30,8 +31,8 @@ $(document).ready(function() {
                         borderWidth: 1
                  	   },
                  	   {
-                        label: "2015 Temperature Avgs (in Farenheit)",
-                        data: [15, 25, 35, 45, 75],
+                        label: "Serial Killer",
+                        data: [4, killerAge, 34, 45, 75],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
@@ -64,6 +65,7 @@ $(document).ready(function() {
             }
         }
     });
+}
 
 
-});
+
