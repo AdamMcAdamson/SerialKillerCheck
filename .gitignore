@@ -1,8 +1,17 @@
+node_modules
+firebaseSetup.js
+
 # Firebase Database Connection
-*.firebase
+firebaseSetup.js
+#legacy
+.firebase
 
-# Node JS 
+# Face++ API Config
+facePPSetup.js
+# legacy
+.faceplusplus
 
+# Node JS
 # Logs
 logs
 *.log
