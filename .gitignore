@@ -1,3 +1,6 @@
+node_modules
+firebaseSetup.js
+
 # Firebase Database Connection
 firebaseSetup.js
 #legacy
